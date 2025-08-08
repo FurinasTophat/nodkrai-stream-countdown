@@ -1,0 +1,106 @@
+<style>
+
+header {
+    color:#ffe8cc;
+    text-align:center;
+    margin-right:600px;
+    margin-top:200px;
+}
+div {
+    text-align:center;
+}
+ html { 
+        height:100%;
+        background: url('nodkrai.png') no-repeat fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: auto auto;
+     background-position: 50% 45%;
+    }
+span {
+    font-size:32px;
+    background: rgba(11,5,5,0.7);
+    margin: 0;
+    position: absolute;
+    transform: translate(-150%, -150%);
+    color:#b6d3fd;
+}
+img {
+    margin-right:auto;
+    margin-left:-260px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.transparent {
+    background: rgba(11,5,5,0.7);
+}
+@media only screen and (orientation:portrait)
+{
+    #wrapper { display:none; }
+    #warning-message { display:block; color: white;}
+    
+    body
+    {
+        background:url(mydei.png) no-repeat;
+        background-position-x: -2000px; 
+        background-size: cover;
+        height: 50%;
+    }       
+}
+</style>
+<header>
+<title>Nod-Krai Stream Countdown</title></title>
+</header>
+<body>
+
+<div id="demo" class="vertical-align"> <span></span></div>
+</body>
+<script>
+
+  var date = new Date(Date.UTC(2025, 7, 29, 12, 0, 0));
+  var timer = date.getTime();
+  var now = new Date().getTime();
+
+  var difference = timer - now;
+  var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((difference % (1000 * 60)) / 1000);
+  document.getElementById("demo").innerHTML = '<span class="vertical-align">'+days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s " +'</span>';
+  var difference = timer - now;
+
+
+  var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+  document.getElementById("demo").innerHTML = '<span>'+days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s " +'</span>';
+  if (difference < 0) {
+    document.getElementById("demo").innerHTML = '<span style="transform: translate(-100%, -150%);">Why are you still here? Go watch the stream.</span>';
+  }
+  var x = setInterval(function() {
+
+  var now = new Date().getTime();
+
+  var difference = timer - now;
+
+
+  var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+  document.getElementById("demo").innerHTML = '<span>'+days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s " +'</span>';
+  if (difference < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = '<span style="transform: translate(-100%, -150%);">Why are you still here? Go watch the stream.</span>';
+  }
+}, 1000);
+</script>
